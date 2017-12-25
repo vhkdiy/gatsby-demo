@@ -1,10 +1,18 @@
 import React from 'react'
 
-export default ({ pathContext }) => {
-    const { slug } = pathContext
+export default ({ data }) => {
+    const post = data.markdownRemark
     return (
-        <div>
-            模版文件 {slug}
-        </div>
+        <div
+            dangerouslySetInnerHTML={{ __html: post.html }}
+        />
     )
 }
+
+export const query = graphql`
+    query BlogPostQuery($slug: String!) {
+        markdownRemark(fields: { slug: { eq: $slug }}) {
+            html
+        }
+    }
+`
