@@ -3195,6 +3195,13 @@ gatsby-source-filesystem@^1.5.11:
     slash "^1.0.0"
     valid-url "^1.0.9"
 
+gatsby-transformer-json@^1.0.14:
+  version "1.0.14"
+  resolved "http://registry.npm.taobao.org/gatsby-transformer-json/download/gatsby-transformer-json-1.0.14.tgz#796a3fcef9d76b1beb3c46a9ff523b2db0f1a472"
+  dependencies:
+    babel-runtime "^6.26.0"
+    bluebird "^3.5.0"
+
 gatsby-transformer-remark@^1.7.25:
   version "1.7.25"
   resolved "http://registry.npm.taobao.org/gatsby-transformer-remark/download/gatsby-transformer-remark-1.7.25.tgz#7fb1a0447270f780d933b838c16b0a82aa195d72"

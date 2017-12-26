@@ -29,12 +29,18 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
                 }
             }
         `).then(result => {
-            result.data.allMarkdownRemark.edges.map(({ node }) => {
+            const { edges: posts } = result.data.allMarkdownRemark
+            posts.map(({ node }) => {
+                const { slug } = node.fields
+                const pid = Number(slug.split('/')[2])
                 createPage({
-                    path: node.fields.slug,
+                    path: slug,
                     component: path.resolve(`./src/templates/blog-post.js`),
                     context: {
-                        slug: node.fields.slug
+                        slug,
+                        pid,
+                        next: pid === posts.length ? null : `/posts/${pid + 1}`,
+                        prev: pid === 1 ? null : `/posts/${pid - 1}`
                     }
                 })
             })

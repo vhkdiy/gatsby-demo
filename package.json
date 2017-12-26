@@ -12,6 +12,7 @@
     "gatsby-link": "^1.6.32",
     "gatsby-plugin-styled-components": "^2.0.4",
     "gatsby-source-filesystem": "^1.5.11",
+    "gatsby-transformer-json": "^1.0.14",
     "gatsby-transformer-remark": "^1.7.25",
     "styled-components": "^2.3.3"
   }
