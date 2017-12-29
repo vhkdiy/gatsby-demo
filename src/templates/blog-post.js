@@ -1,12 +1,18 @@
 import React from 'react'
 import Link from "gatsby-link"
 import styled from "styled-components"
+import Helmet from 'react-helmet'
 
 export default ({ data, pathContext }) => {
     const post = data.markdownRemark
+    const { title } = data.indexJson
     const { next, prev } = pathContext
     return (
         <Wrap>
+            <Helmet title={title} />
+            <Title>
+                { title }
+            </Title>
             <div className='markdown-content'
                 dangerouslySetInnerHTML={{ __html: post.html }}
             />
@@ -29,11 +35,20 @@ export default ({ data, pathContext }) => {
 }
 
 export const query = graphql`
-    query BlogPostQuery($slug: String!) {
+    query BlogPostQuery($slug: String!, $pid: String!) {
         markdownRemark(fields: { slug: { eq: $slug }}) {
             html
         }
+        indexJson(id: {eq: $pid}) {
+            title
+        }
     }
+`
+
+const Title = styled.div`
+    font-size: 20px;
+    text-align: center;
+    font-weight: 600px;
 `
 
 const Nav = styled.div`
